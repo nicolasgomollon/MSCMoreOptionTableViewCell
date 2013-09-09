@@ -58,7 +58,7 @@
          * because it must be the same instance and not an equal one.
          */
         if ([object isKindOfClass:[CALayer class]] && ((CALayer *)object).delegate == self.cellScrollView) {
-            BOOL moreOptionDelteButtonVisiblePrior = (self.moreOptionButton != nil);
+            BOOL moreOptionDeleteButtonVisiblePrior = (self.moreOptionButton != nil);
             BOOL swipeToDeleteControlVisible = NO;
             for (CALayer *layer in [(CALayer *)object sublayers]) {
                 /*
@@ -109,7 +109,7 @@
                     }
                 }
             }
-            if (moreOptionDelteButtonVisiblePrior && !swipeToDeleteControlVisible) {
+            if (moreOptionDeleteButtonVisiblePrior && !swipeToDeleteControlVisible) {
                 self.moreOptionButton = nil;
             }
         }
