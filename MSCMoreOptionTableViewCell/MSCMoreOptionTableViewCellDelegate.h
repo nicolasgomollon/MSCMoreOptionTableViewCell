@@ -14,7 +14,7 @@
 @optional
 /*
  * If not implemented, returning nil or an empty string the "More" button will have
- * no title and it's width will be 60 points.
+ * no title and its width will be 74 points.
  */
 - (NSString *)tableView:(UITableView *)tableView titleForMoreOptionButtonForRowAtIndexPath:(NSIndexPath *)indexPath;
 
