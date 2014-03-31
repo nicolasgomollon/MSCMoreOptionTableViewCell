@@ -134,13 +134,10 @@
 }
 
 - (void)setMoreOptionButtonTitle:(NSString *)title inDeleteConfirmationView:(UIView *)deleteConfirmationView {
-	CGFloat priorMoreOptionButtonFrameWidth = self.moreOptionButton.frame.size.width;
-	
 	[self.moreOptionButton setTitle:title forState:UIControlStateNormal];
 	[self.moreOptionButton sizeToFit];
 	
 	CGRect moreOptionButtonFrame = CGRectZero;
-	moreOptionButtonFrame.size.width = 74.0f;
 	
 	/*
 	 * Look for the "Delete" button to apply its height also to the "More" button.
@@ -150,8 +147,8 @@
 		NSString *name = NSStringFromClass([deleteConfirmationButton class]);
 		if ([name hasPrefix:@"UI"] && ([name rangeOfString:@"Delete"].length > 0) && [name hasSuffix:@"Button"]) {
 			CGRect deleteFrame = deleteConfirmationButton.frame;
-			[(UIView *)deleteConfirmationButton setFrame:CGRectMake(deleteFrame.origin.x + 8.0f, deleteFrame.origin.y, moreOptionButtonFrame.size.width, deleteFrame.size.height)];
-			moreOptionButtonFrame.size.height = ((UIView *)deleteConfirmationButton).frame.size.height;
+			moreOptionButtonFrame.size.width = deleteFrame.size.width;
+			moreOptionButtonFrame.size.height = deleteFrame.size.height;
 			break;
 		}
 	}
@@ -162,7 +159,7 @@
 	self.moreOptionButton.frame = moreOptionButtonFrame;
 	
 	CGRect rect = deleteConfirmationView.frame;
-	rect.size.width = 148.0f;
+	rect.size.width = (moreOptionButtonFrame.size.width * 2.0f);
 	rect.origin.x = deleteConfirmationView.superview.bounds.size.width - rect.size.width;
 	deleteConfirmationView.frame = rect;
 }
